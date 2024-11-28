@@ -380,3 +380,36 @@ body {
 .settlement-button:hover {
   background-color: #b8860b;
 }
+.join-now-section {
+  text-align: center;
+  padding: 50px;
+}
+
+.join-now-title {
+  font-size: 3em;
+  color: #c89b3c;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.join-now-button {
+  font-size: 1.5em;
+  color: #1b263b;
+  background-color: #c89b3c;
+  border: none;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+}
+
+.join-now-button:hover {
+  background-color: #b8860b;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
+}
+
+.join-now-button:active {
+  transform: scale(0.95);
+}

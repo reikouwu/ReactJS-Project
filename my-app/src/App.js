@@ -3,6 +3,7 @@ import { FaHome, FaInfoCircle } from 'react-icons/fa';
 import { GiMountainCave } from 'react-icons/gi';
 import './App.css';
 
+
 const App = () => {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -26,8 +27,15 @@ const App = () => {
     setNewsletterEmail('');
   };
 
-  const toggleSettlementDetails = (index) => {
-    setShowSettlementDetails(prev => prev.map((value, i) => (i === index ? !value : value)));
+  const handleJoinNowClick = async () => {
+    try {
+      const response = await fetch('https://api.randomuser.me/');
+      const data = await response.json();
+      const characterName = `${data.results[0].name.first} ${data.results[0].name.last}`;
+      alert(`Welcome to Alathra, ${characterName}!`);
+    } catch (error) {
+      alert('Failed to generate character name. Please try again later.');
+    }
   };
 
   return (
@@ -114,13 +122,13 @@ const App = () => {
                 <h3>{settlement}</h3>
                 <p>
                   {showSettlementDetails[index] ? (
-                    index === 0 ? 'Settlement One' :
-                      index === 1 ? 'Settlement Two' :
-                        'Settlement Three'
+                    index === 0 ? 'Settlement One is known for its beautiful landscapes and peaceful environment.' :
+                      index === 1 ? 'Settlement Two is famous for its bustling market and cultural diversity.' :
+                        'Settlement Three is a coastal gem, known for its scenic beaches and maritime charm.'
                   ) : (
-                    index === 0 ? 'Settlement One' :
-                      index === 1 ? 'Settlement Two' :
-                        'Settlement Three'
+                    index === 0 ? 'Settlement One: A peaceful and scenic area.' :
+                      index === 1 ? 'Settlement Two: A bustling market town.' :
+                        'Settlement Three: A coastal village.'
                   )}
                 </p>
                 <button
@@ -138,6 +146,12 @@ const App = () => {
           ))}
         </div>
       </section>
+
+      <section className="join-now-section">
+        <h2 className="join-now-title">Join Alathra Today!</h2>
+        <button className="join-now-button" onClick={handleJoinNowClick}>Join Now</button>
+      </section>
+
       <footer className="footer" id="footer">
         <div className="footer">
           <div className="row">
@@ -163,4 +177,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;
