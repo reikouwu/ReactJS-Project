@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaHome, FaInfoCircle } from 'react-icons/fa';
 import { GiMountainCave } from 'react-icons/gi';
 import './App.css';
@@ -6,6 +6,7 @@ import './App.css';
 const App = () => {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [showSettlementDetails, setShowSettlementDetails] = useState([false, false, false]);
 
   const image = 'https://content.invisioncic.com/r268468/monthly_2018_08/Vintage_Story_Worldgen24.jpg.287ee1691d6160cbde444dfa8d7761d0.jpg';
 
@@ -22,7 +23,11 @@ const App = () => {
 
   const handleNewsletterSubmit = (event) => {
     event.preventDefault();
-        setNewsletterEmail('');
+    setNewsletterEmail('');
+  };
+
+  const toggleSettlementDetails = (index) => {
+    setShowSettlementDetails(prev => prev.map((value, i) => (i === index ? !value : value)));
   };
 
   return (
@@ -53,7 +58,7 @@ const App = () => {
         </ul>
       </nav>
 
-      <section 
+      <section
         className="hero-section"
         style={{ backgroundImage: `linear-gradient(180deg, rgba(13, 27, 42, 0.5), rgba(27, 38, 59, 0.5)), linear-gradient(rgba(0, 47, 75, 0.2), rgba(0, 47, 75, 0.2)), url(${image})` }}
       >
@@ -64,9 +69,75 @@ const App = () => {
         </div>
       </section>
 
-<section>
+      <section className="features-section">
+        <h2 className="features-title">FEATURES</h2>
+        <p className="features-description">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</p>
+        <div className="features-list">
+          <div className="feature-item">
+            <h3>01</h3>
+            <h4>Feature Name</h4>
+            <p>I'm a paragraph. Click here to add your text and edit me.</p>
+          </div>
+          <div className="feature-item">
+            <h3>02</h3>
+            <h4>Feature Name</h4>
+            <p>I'm a paragraph. Click here to add your text and edit me.</p>
+          </div>
+          <div className="feature-item">
+            <h3>03</h3>
+            <h4>Feature Name</h4>
+            <p>I'm a paragraph. Click here to add your text and edit me.</p>
+          </div>
+        </div>
+      </section>
 
-</section>
+      <section className="map-section">
+        <h2 className="map-title">Explore Alathra</h2>
+        <div id="map" className="map-container" style={{ height: '800px', width: '100%' }}>
+          <img src="https://alathra.com/media/images/mapdetailed.png" alt="Map of Alathra" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </div>
+      </section>
+
+      <section className="settlements-section">
+        <h2 className="settlements-title">Settlements</h2>
+        <div className="settlements-list">
+          {['Settlement One', 'Settlement Two', 'Settlement Three'].map((settlement, index) => (
+            <div key={index} className="settlement-card">
+              <div className="settlement-image-container">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiKeTsm26jLOx1RQhXGkRSPWNj2tCeMKdUA&s"
+                  alt={settlement}
+                  className="settlement-image"
+                />
+              </div>
+              <div className="settlement-content">
+                <h3>{settlement}</h3>
+                <p>
+                  {showSettlementDetails[index] ? (
+                    index === 0 ? 'Settlement One' :
+                      index === 1 ? 'Settlement Two' :
+                        'Settlement Three'
+                  ) : (
+                    index === 0 ? 'Settlement One' :
+                      index === 1 ? 'Settlement Two' :
+                        'Settlement Three'
+                  )}
+                </p>
+                <button
+                  className="settlement-button"
+                  onClick={() => {
+                    let newShowDetails = [...showSettlementDetails];
+                    newShowDetails[index] = !newShowDetails[index];
+                    setShowSettlementDetails(newShowDetails);
+                  }}
+                >
+                  {showSettlementDetails[index] ? 'Read Less' : 'Read More'}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
       <footer className="footer" id="footer">
         <div className="footer">
           <div className="row">
@@ -75,7 +146,6 @@ const App = () => {
             <a href="#"><i className="fa fa-youtube"></i></a>
             <a href="#"><i className="fa fa-twitter"></i></a>
           </div>
-
           <div className="row">
             <ul>
               <li><a href="#">Contact us</a></li>
@@ -85,14 +155,12 @@ const App = () => {
               <li><a href="#">Career</a></li>
             </ul>
           </div>
-
           <div className="row">
-            Copyright © 2041 Inferno - All rights reserved
+            Copyright © 2024
           </div>
         </div>
       </footer>
     </div>
   );
 };
-
 export default App;
