@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "leaflet": "^1.9.4"
+    "leaflet": "^1.9.4",
+    "react-router-dom": "^7.0.1"
   }
 }
