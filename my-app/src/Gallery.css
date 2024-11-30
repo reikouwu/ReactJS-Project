@@ -1,0 +1,60 @@
+/* Gallery.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+body {
+  background: #0d1b2a;
+  font-family: 'Cinzel', serif;
+  color: #f8f8f8;
+}
+
+.gallery-container {
+  padding: 20px;
+  text-align: center;
+  color: #f8f8f8;
+  font-family: 'Cinzel', serif;
+}
+
+.gallery-slideshow {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  background-image: url('https://content.invisioncic.com/r268468/monthly_2018_08/Vintage_Story_Worldgen24.jpg.287ee1691d6160cbde444dfa8d7761d0.jpg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+.gallery-image {
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.gallery-buttons {
+  margin-top: 20px;
+}
+
+.gallery-button {
+  background-color: #1b263b;
+  color: #c89b3c;
+  border: 2px solid #c89b3c;
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border-radius: 8px;
+  font-family: 'Cinzel', serif;
+  margin-right: 10px;
+}
+
+.gallery-button:hover {
+  background-color: #c89b3c;
+  color: #1b263b;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
