@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaHome, FaInfoCircle } from 'react-icons/fa';
 import { GiMountainCave } from 'react-icons/gi';
 import './App.css';
 
-
 const App = () => {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [showSettlementDetails, setShowSettlementDetails] = useState([false, false, false]);
 
   const image = 'https://content.invisioncic.com/r268468/monthly_2018_08/Vintage_Story_Worldgen24.jpg.287ee1691d6160cbde444dfa8d7761d0.jpg';
 
@@ -22,24 +19,9 @@ const App = () => {
     });
   };
 
-  const handleNewsletterSubmit = (event) => {
-    event.preventDefault();
-    setNewsletterEmail('');
-  };
-
-  const handleJoinNowClick = async () => {
-    try {
-      const response = await fetch('https://api.randomuser.me/');
-      const data = await response.json();
-      const characterName = `${data.results[0].name.first} ${data.results[0].name.last}`;
-      alert(`Welcome to Alathra, ${characterName}!`);
-    } catch (error) {
-      alert('Failed to generate character name. Please try again later.');
-    }
-  };
-
   return (
     <div>
+      {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-logo">
           <GiMountainCave size={40} />
@@ -66,6 +48,7 @@ const App = () => {
         </ul>
       </nav>
 
+      {/* Hero Section */}
       <section
         className="hero-section"
         style={{ backgroundImage: `linear-gradient(180deg, rgba(13, 27, 42, 0.5), rgba(27, 38, 59, 0.5)), linear-gradient(rgba(0, 47, 75, 0.2), rgba(0, 47, 75, 0.2)), url(${image})` }}
@@ -77,28 +60,24 @@ const App = () => {
         </div>
       </section>
 
+      {/* Features Section */}
       <section className="features-section">
-        <h2 className="features-title">FEATURES</h2>
-        <p className="features-description">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</p>
+        <h2 className="features-title">Features</h2>
         <div className="features-list">
           <div className="feature-item">
-            <h3>01</h3>
-            <h4>Feature Name</h4>
-            <p>I'm a paragraph. Click here to add your text and edit me.</p>
+            <h3>Feature One</h3>
           </div>
           <div className="feature-item">
-            <h3>02</h3>
-            <h4>Feature Name</h4>
-            <p>I'm a paragraph. Click here to add your text and edit me.</p>
+            <h3>Feature Two</h3>
           </div>
           <div className="feature-item">
-            <h3>03</h3>
-            <h4>Feature Name</h4>
-            <p>I'm a paragraph. Click here to add your text and edit me.</p>
+            <h3>Feature Three</h3>
+
           </div>
         </div>
       </section>
 
+      {/* Map Section */}
       <section className="map-section">
         <h2 className="map-title">Explore Alathra</h2>
         <div id="map" className="map-container" style={{ height: '800px', width: '100%' }}>
@@ -106,52 +85,13 @@ const App = () => {
         </div>
       </section>
 
-      <section className="settlements-section">
-        <h2 className="settlements-title">Settlements</h2>
-        <div className="settlements-list">
-          {['Settlement One', 'Settlement Two', 'Settlement Three'].map((settlement, index) => (
-            <div key={index} className="settlement-card">
-              <div className="settlement-image-container">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiKeTsm26jLOx1RQhXGkRSPWNj2tCeMKdUA&s"
-                  alt={settlement}
-                  className="settlement-image"
-                />
-              </div>
-              <div className="settlement-content">
-                <h3>{settlement}</h3>
-                <p>
-                  {showSettlementDetails[index] ? (
-                    index === 0 ? 'Settlement One is known for its beautiful landscapes and peaceful environment.' :
-                      index === 1 ? 'Settlement Two is famous for its bustling market and cultural diversity.' :
-                        'Settlement Three is a coastal gem, known for its scenic beaches and maritime charm.'
-                  ) : (
-                    index === 0 ? 'Settlement One: A peaceful and scenic area.' :
-                      index === 1 ? 'Settlement Two: A bustling market town.' :
-                        'Settlement Three: A coastal village.'
-                  )}
-                </p>
-                <button
-                  className="settlement-button"
-                  onClick={() => {
-                    let newShowDetails = [...showSettlementDetails];
-                    newShowDetails[index] = !newShowDetails[index];
-                    setShowSettlementDetails(newShowDetails);
-                  }}
-                >
-                  {showSettlementDetails[index] ? 'Read Less' : 'Read More'}
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      {/* Join Now Section */}
       <section className="join-now-section">
         <h2 className="join-now-title">Join Alathra Today!</h2>
-        <button className="join-now-button" onClick={handleJoinNowClick}>Join Now</button>
+        <button className="join-now-button">Join Now</button>
       </section>
 
+      {/* Footer */}
       <footer className="footer" id="footer">
         <div className="footer">
           <div className="row">
@@ -170,7 +110,7 @@ const App = () => {
             </ul>
           </div>
           <div className="row">
-            Copyright © 2024
+            Copyright &copy; 2024
           </div>
         </div>
       </footer>
