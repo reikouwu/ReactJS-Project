@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.info {
+  padding: 40px;
+  background: #0d1b2a; /* Dark background to match other pages */
+  color: #f8f8f8;
+  font-family: 'Cinzel', serif;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #c89b3c; /* Golden */
+  text-shadow: 3px 3px 6px #000;
+  margin-bottom: 40px;
+  font-family: 'Cinzel', serif;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 50px;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-in-out;
+  background: linear-gradient(145deg, #1b263b, #0d1b2a);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  border: 2px solid #c89b3c; /* Golden border */
+}
+
+.info-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.info-image {
+  flex: 1;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  margin: 20px;
+}
+
+.info-text {
+  flex: 2;
+  padding: 20px;
+  font-family: 'Cinzel', serif;
+}
+
+.info-text h2 {
+  font-size: 2.5rem;
+  color: #c89b3c; 
+  text-shadow: 3px 3px 6px #000;
+  margin-bottom: 15px;
+}
+
+.info-text p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #b0c4de;
+}
+
+@keyframes dropdownFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 720px) {
+  .info-section {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .info-image {
+    max-width: 300px;
+  }
+
+  .info-text h2 {
+    font-size: 2rem;
+  }
+
+  .info-text p {
+    font-size: 1.2rem;
+  }
+}
