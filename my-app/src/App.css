@@ -2,12 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
-body  {
-  background: #0d1b2a ; 
+/* General Styles */
+body {
+  background: linear-gradient(to bottom, #0d1b2a, #1b263b);
   font-family: 'Cinzel', serif;
   color: #f8f8f8;
+  overflow-x: hidden;
 }
 
+.app {
+  position: relative;
+}
+
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -16,23 +23,21 @@ body  {
   border-bottom: 3px solid #c89b3c;
   padding: 20px 40px;
   color: #f8f8f8;
-  font-family: 'Cinzel', serif;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
   position: relative;
+  z-index: 10;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  color: #f8f8f8;
 }
 
-.navbar-logo span {
+.navbar-title {
   margin-left: 15px;
   font-size: 2em;
-  color: #c89b3c; /* Golden */
+  color: #c89b3c;
   text-shadow: 3px 3px 6px #000;
-  font-family: 'MedievalSharp', serif;
 }
 
 .navbar-links {
@@ -48,8 +53,6 @@ body  {
   cursor: pointer;
   font-weight: bold;
   text-shadow: 2px 2px 4px #000;
-  font-family: 'Cinzel', serif;
-  position: relative;
 }
 
 .navbar-item a {
@@ -60,15 +63,10 @@ body  {
 }
 
 .navbar-item a:hover {
-  color: #c89b3c; /* Golden */
+  color: #c89b3c;
 }
 
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
+/* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
   background: radial-gradient(circle, #4b4a4a, #1e1e1e);
@@ -81,33 +79,102 @@ body  {
   gap: 15px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.8);
   border: 2px solid #c89b3c;
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: dropdownFadeIn 0.5s forwards ease;
+  opacity: 1;
+  transform: none;
 }
 
 .dropdown-menu a {
   text-decoration: none;
   color: #f8f8f8;
-  font-family: 'Cinzel', serif;
   transition: color 0.3s ease;
 }
 
 .dropdown-menu a:hover {
-  color: #c89b3c; /* Golden */
+  color: #c89b3c;
 }
 
-@keyframes dropdownFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+/* Keyframes for Animations */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
+
+  40% {
+    transform: translateY(-15px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -500px;
+  }
+
+  100% {
+    background-position: 500px;
+  }
+}
+
+/* Floating Elements */
+.floating-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: twinkling 20s linear infinite;
+}
+
+.floating-glow {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  animation: pulse 5s infinite;
+  transform: translateX(-50%);
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hero Section */
 .hero-section {
   display: flex;
   justify-content: center;
@@ -117,30 +184,23 @@ body  {
   background-position: center;
   text-align: center;
   padding: 0 20px;
-  color: #c89b3c; /* Golden */
-  font-family: 'Cinzel', serif;
   position: relative;
   border-bottom: 3px solid #c89b3c;
-}
-
-.hero-content {
-  max-width: 800px;
-  position: relative;
 }
 
 .hero-title {
   font-size: 4em;
   text-shadow: 4px 4px 8px #000;
-  color: #c89b3c; /* Golden */
+  color: #c89b3c;
   margin-bottom: 20px;
-  font-family: 'Cinzel', serif;
 }
 
 .hero-description {
   font-size: 1.8em;
-  color: #b0c4de; /* Light steel blue */
+  color: #b0c4de;
   margin-bottom: 30px;
-  font-family: 'Cinzel', serif;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
 }
 
 .hero-button {
@@ -152,7 +212,10 @@ body  {
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   border-radius: 15px;
-  font-family: 'Cinzel', serif;
+  background-image: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  font-family: 'MedievalSharp', cursive;
 }
 
 .hero-button:hover {
@@ -162,25 +225,18 @@ body  {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
+/* Features Section */
 .features-section {
   text-align: center;
-  padding: 60px 20px;
-  color: #f8f8f8;
-  font-family: 'Cinzel', serif;
-  background: #0d1b2a;
+  padding: 100px 40px; /* Increased padding for a larger section */
+  color: #b0c4de; /* Same blue color as the hero section */
 }
 
 .features-title {
-  font-size: 3em;
-  margin-bottom: 20px;
+  font-size: 3em; /* Increased font size */
+  margin-bottom: 40px;
   text-shadow: 3px 3px 6px #000;
   color: #c89b3c;
-}
-
-.features-description {
-  font-size: 1.2em;
-  margin-bottom: 40px;
-  color: #b0c4de; /* Light steel blue */
 }
 
 .features-list {
@@ -192,32 +248,221 @@ body  {
 .feature-item {
   width: 30%;
   text-align: center;
+  animation: slide-in 1.5s ease-out;
+  color: #b0c4de; /* Same blue color as the hero section */
 }
 
 .feature-item h3 {
-  font-size: 4em;
-  color: #c89b3c; /* Golden */
-  text-shadow: 3px 3px 6px #000;
+  font-size: 1.5em; /* Increased font size for feature numbers */
+  color: #c89b3c;
+  margin-bottom: 10px;
 }
 
 .feature-item h4 {
-  font-size: 1.8em;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  color: #f8f8f8;
+  font-size: 1.5em; /* Increased font size for feature titles */
+  color: #b0c4de; 
+  margin-bottom: 10px;
 }
 
 .feature-item p {
-  font-size: 1em;
-  color: #b0c4de; /* Light steel blue */
+  font-size: 1.5em; /* Increased font size for feature descriptions */
+  color: #b0c4de;
 }
 
+/* Settlements Section */
+.settlements-section {
+  padding: 50px;
+  text-align: center;
+}
+
+.settlements-title {
+  font-size: 3.5em; /* Increased font size */
+  color: #c89b3c;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.settlements-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px; /* Increased gap for better spacing */
+  flex-wrap: wrap;
+}
+
+.settlement-card {
+  background: #1b263b;
+  border: 2px solid #c89b3c;
+  border-radius: 15px;
+  width: 35%; /* Increased width */
+  min-width: 300px; /* Increased minimum width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out;
+  padding: 30px; /* Increased padding for better spacing */
+  color: #b0c4de; /* Same blue color as the hero section */
+}
+
+.settlement-card:hover {
+  transform: translateY(-10px);
+}
+
+.settlement-image-container {
+  width: 100%;
+  height: 250px; /* Increased height for better visibility */
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.settlement-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.settlement-button {
+  background-color: #c89b3c;
+  color: #1b263b;
+  border: none;
+  padding: 15px 25px; /* Increased padding */
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.settlement-button:hover {
+  background-color: #b8860b;
+}
+
+/* Join Now Section */
+.join-now-section {
+  text-align: center;
+  padding: 50px;
+}
+
+.join-now-title {
+  font-size: 3em;
+  color: #c89b3c;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.join-now-button {
+  font-size: 1.5em;
+  color: #1b263b;
+  background-color: #c89b3c;
+  border: none;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  animation: shimmer 4s linear infinite;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.join-now-button:hover {
+  background-color: #b8860b;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
+}
+
+.join-now-button:active {
+  transform: scale(0.95);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(90deg, #0d1b2a, #1b263b);
+  color: #f8f8f8;
+  text-align: center;
+  padding: 40px;
+  position: relative;
+  z-index: 11;
+}
+
+/* Remove floating stars for the footer */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.footer .row {
+  margin: 1% 0;
+  padding: 0.6% 0;
+}
+
+.footer .row a {
+  text-decoration: none;
+  color: #f8f8f8;
+  transition: color 0.5s ease;
+}
+
+.footer .row a:hover {
+  color: #c89b3c;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.footer .row ul {
+  list-style-type: none;
+}
+
+.footer .row ul li {
+  display: inline-block;
+  margin: 0 30px;
+}
+
+.footer .row a i {
+  font-size: 2em;
+  margin: 0 10px;
+  padding-top: 20px;
+  transition: transform 0.3s ease;
+}
+
+.footer .row a i:hover {
+  transform: scale(1.1);
+  color: #c89b3c;
+}
+
+/* Animations */
+.bounce-animation {
+  animation: bounce 2s infinite;
+}
+
+.shimmer-effect {
+  background-image: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+.fade-in-animation {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Map Section */
 .map-section {
   text-align: center;
   padding: 60px 20px;
-  color: #f8f8f8;
-  font-family: 'Cinzel', serif;
-  background: #0d1b2a;
 }
 
 .map-title {
@@ -247,169 +492,131 @@ body  {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
 }
 
-.footer {
-  background: linear-gradient(90deg, #0d1b2a, #1b263b);
-  font-family: 'Cinzel', serif;
-  color: #f8f8f8;
-  text-align: center;
+/* Utility */
+.scale-up-animation {
+  animation: scaleUp 1s ease-in-out;
 }
 
-.footer .row {
-  width: 100%;
-  margin: 1% 0;
-  padding: 0.6% 0;
-  font-size: 1em;
-}
-
-.footer .row a {
-  text-decoration: none;
-  color: #f8f8f8;
-  transition: color 0.5s ease;
-  font-family: 'Cinzel', serif;
-}
-
-.footer .row a:hover {
-  color: #c89b3c; /* Golden */
-  text-shadow: 2px 2px 4px #000;
-}
-
-.footer .row ul {
-  width: 100%;
-  padding: 0;
-  list-style-type: none;
-}
-
-.footer .row ul li {
-  display: inline-block;
-  margin: 0 30px;
-}
-
-.footer .row a i {
-  font-size: 2em;
-  margin: 0 10px; /* Spacing between icons */
-  padding-top: 20px; /* Added padding on top of the icons */
-  transition: transform 0.3s ease;
-}
-
-.footer .row a i:hover {
-  transform: scale(1.1);
-  color: #c89b3c; /* Golden */
-}
-
-.footer .quote {
-  font-style: italic;
-  font-size: 1.2em;
-  color: #b0c4de; /* Light steel blue */
-  margin-top: 20px;
-  text-shadow: 2px 2px 4px #000;
-}
-
-@media (max-width: 720px) {
-  .footer {
-    text-align: center;
-    padding: 5%;
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8);
   }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 5s infinite;
+}
+
+.swing-in-animation {
+  animation: swingIn 1s ease-in-out;
+}
+
+@keyframes swingIn {
+  0% {
+    transform: rotateX(-100deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+
+  .navbar-title {
+    font-size: 1.8em;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: 3em;
+  }
+
+  .hero-description {
+    font-size: 1.5em;
+  }
+
+  .features-list {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .feature-item {
+    width: 80%;
+  }
+
+  .settlements-list {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .settlement-card {
+    width: 80%;
+  }
+
+  .map-container img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .navbar-title {
+    font-size: 1.5em;
+  }
+
+  .navbar-links {
+    gap: 10px;
+  }
+
+  .hero-title {
+    font-size: 2.5em;
+  }
+
+  .hero-description {
+    font-size: 1.2em;
+  }
+
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+
+  .features-title,
+  .settlements-title,
+  .join-now-title {
+    font-size: 2.5em;
+  }
+
+  .feature-item,
+  .settlement-card {
+    width: 100%;
+  }
+
+  .join-now-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+  }
+
   .footer .row ul li {
-    display: block;
-    margin: 10px 0;
+    margin: 0 10px;
   }
-}
-/* Settlement Cards CSS */
-.settlements-section {
-  padding: 50px;
-  text-align: center;
-}
-
-.settlements-title {
-  font-size: 3em;
-  color: #c89b3c;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px #000;
-}
-
-.settlements-list {
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.settlement-card {
-  background: #1b263b;
-  border: 2px solid #c89b3c;
-  border-radius: 15px;
-  width: 30%;
-  min-width: 250px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-  transition: transform 0.3s ease;
-  overflow: hidden;
-}
-
-.settlement-card:hover {
-  transform: translateY(-10px);
-}
-
-.settlement-image-container {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.settlement-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.settlement-content {
-  padding: 20px;
-  color: #b0c4de;
-}
-
-.settlement-button {
-  background-color: #c89b3c;
-  color: #1b263b;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  border-radius: 10px;
-}
-
-.settlement-button:hover {
-  background-color: #b8860b;
-}
-.join-now-section {
-  text-align: center;
-  padding: 50px;
-}
-
-.join-now-title {
-  font-size: 3em;
-  color: #c89b3c;
-  text-shadow: 2px 2px 4px #000;
-}
-
-.join-now-button {
-  font-size: 1.5em;
-  color: #1b263b;
-  background-color: #c89b3c;
-  border: none;
-  padding: 15px 30px;
-  cursor: pointer;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  text-transform: uppercase;
-}
-
-.join-now-button:hover {
-  background-color: #b8860b;
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
-}
-
-.join-now-button:active {
-  transform: scale(0.95);
 }
