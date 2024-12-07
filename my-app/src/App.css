@@ -228,12 +228,12 @@ body {
 /* Features Section */
 .features-section {
   text-align: center;
-  padding: 100px 40px; /* Increased padding for a larger section */
-  color: #b0c4de; /* Same blue color as the hero section */
+  padding: 100px 40px;
+  color: #b0c4de;
 }
 
 .features-title {
-  font-size: 3em; /* Increased font size */
+  font-size: 3em;
   margin-bottom: 40px;
   text-shadow: 3px 3px 6px #000;
   color: #c89b3c;
@@ -249,23 +249,23 @@ body {
   width: 30%;
   text-align: center;
   animation: slide-in 1.5s ease-out;
-  color: #b0c4de; /* Same blue color as the hero section */
+  color: #b0c4de;
 }
 
 .feature-item h3 {
-  font-size: 1.5em; /* Increased font size for feature numbers */
+  font-size: 2.5em;
   color: #c89b3c;
   margin-bottom: 10px;
 }
 
 .feature-item h4 {
-  font-size: 1.5em; /* Increased font size for feature titles */
+  font-size: 2em; 
   color: #b0c4de; 
   margin-bottom: 10px;
 }
 
 .feature-item p {
-  font-size: 1.5em; /* Increased font size for feature descriptions */
+  font-size: 1.5em;
   color: #b0c4de;
 }
 
@@ -276,7 +276,7 @@ body {
 }
 
 .settlements-title {
-  font-size: 3.5em; /* Increased font size */
+  font-size: 3.5em;
   color: #c89b3c;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px #000;
@@ -285,7 +285,7 @@ body {
 .settlements-list {
   display: flex;
   justify-content: space-around;
-  gap: 40px; /* Increased gap for better spacing */
+  gap: 40px; 
   flex-wrap: wrap;
 }
 
@@ -293,14 +293,14 @@ body {
   background: #1b263b;
   border: 2px solid #c89b3c;
   border-radius: 15px;
-  width: 35%; /* Increased width */
-  min-width: 300px; /* Increased minimum width */
+  width: 35%;
+  min-width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   transition: transform 0.3s ease;
   overflow: hidden;
   animation: fadeIn 1.5s ease-in-out;
-  padding: 30px; /* Increased padding for better spacing */
-  color: #b0c4de; /* Same blue color as the hero section */
+  padding: 30px; 
+  color: #b0c4de;
 }
 
 .settlement-card:hover {
@@ -309,7 +309,7 @@ body {
 
 .settlement-image-container {
   width: 100%;
-  height: 250px; /* Increased height for better visibility */
+  height: 250px;
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -324,7 +324,7 @@ body {
   background-color: #c89b3c;
   color: #1b263b;
   border: none;
-  padding: 15px 25px; /* Increased padding */
+  padding: 15px 25px; 
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
@@ -381,9 +381,10 @@ body {
   padding: 40px;
   position: relative;
   z-index: 11;
+  border-top: 3px solid #c89b3c;
 }
 
-/* Remove floating stars for the footer */
+
 .footer::before {
   content: "";
   position: absolute;

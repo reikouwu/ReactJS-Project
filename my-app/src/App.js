@@ -5,7 +5,6 @@ import { GiMountainCave } from 'react-icons/gi';
 import Info from './Info';
 import Gallery from './Gallery';
 import './App.css';
-
 const App = () => {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [showSettlementDetails, setShowSettlementDetails] = useState([false, false, false]);
@@ -120,8 +119,8 @@ const App = () => {
                 <div className="settlements-list">
                   {[
                     { name: 'Eldoria', img: 'https://inanage.com/wp-content/uploads/2024/08/vintagestory_betterruins.jpg?w=1000' },
-                    { name: 'Rivermoor', img: 'https://media.invisioncic.com/r268468/monthly_2022_03/823742002_Vintagestory2022-03-1220-41-23-24.jpg.f82e516768168a3f4fdbdf3efff2ba4c.jpg' },
-                    { name: 'Stormhold', img: 'https://uploads.golmedia.net/uploads/articles/article_media/6119340881662484751gol1.jpg' }
+                    { name: 'Rivermoor', img: 'https://uploads.golmedia.net/uploads/articles/article_media/6119340881662484751gol1.jpg' },
+                    { name: 'Stormhold', img: 'https://media.invisioncic.com/r268468/monthly_2017_07/IronPottery4.jpg.4c8a18bb7b02f139a086e973b6749e86.jpg' }
                   ].map((settlement, index) => (
                     <div key={index} className="settlement-card fantasy-card fade-in-animation">
                       <div className="settlement-image-container">
